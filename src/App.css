@@ -1,3 +1,22 @@
+@font-face {
+  font-family: myFont;
+  src: url("../public/fonts/BitcountPropDouble-Bold.ttf");
+  font-weight: 900;
+}
+@font-face {
+  font-family: myFont;
+  src: url("../public/fonts/BitcountPropDouble-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: myFont;
+  src: url("../public/fonts/BitcountPropDouble-Thin.ttf");
+  font-weight: 200;
+}
+
+
+
+
 body {
   background: linear-gradient(
     135deg,
@@ -6,5 +25,16 @@ body {
     #24243e
   );
   min-height: 100vh;
-  font-family: sans-serif;
+}
+.button-category {
+  transition: 0.5s;
+  background-color: #8A2BE2;
+
+}
+.button-category:hover{
+background-color: #3c1461;
+}
+.button-category:focus {
+  background-color: #3c1461;
+
 }

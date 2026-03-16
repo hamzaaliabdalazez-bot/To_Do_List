@@ -7,18 +7,22 @@ import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
 
 
+
+
 const TodoForm = () => {
   const { addTask } = useContext(TaskContext);
 
+  const formattedDate = new Date().toISOString().split("T")[0];
+
   const [task, setTask] = useState("");
-  const [deadline, setDeadline] = useState("");
+  const [deadline, setDeadline] = useState(formattedDate);
   const [category, setCategory] = useState("Personal");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const newTask = {
-      id: Date.now(),
+      id: formattedDate + "-" + Math.random().toString(36).substr(2, 9),
       name: task,
       deadline: deadline,
       category: category,
@@ -27,7 +31,7 @@ const TodoForm = () => {
     addTask(newTask);
 
     setTask("");
-    setDeadline("");
+    setDeadline(formattedDate);
   };
 
   return (
@@ -46,6 +50,7 @@ const TodoForm = () => {
           InputLabelProps={{ shrink: true }}
           value={deadline}
           onChange={(e) => setDeadline(e.target.value)}
+          // required
         />
 
         <TextField
@@ -59,10 +64,9 @@ const TodoForm = () => {
           <MenuItem value="Personal">Personal</MenuItem>
         </TextField>
 
-        <Button type="submit" variant="contained">
+        <Button type="submit" variant="contained" disabled={task === ""}>
           Add Task
         </Button>
- 
       </Stack>
     </form>
   );
